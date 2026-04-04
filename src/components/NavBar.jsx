@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import {
+  Waves,
   Acorn,
   House,
   ArrowsLeftRight,
@@ -28,9 +29,9 @@ function NavBar() {
           {/* LEFT: Logo & Brand */}
           <div className="nav-left">
             <div className="brand">
-              <Acorn size={24} weight="bold" color="white" />
+              <Waves size={24} weight="bold" color="white" />
               <span className="brand-name" style={{ color: "white" }}>
-                Finance
+                FinWave
               </span>
             </div>
           </div>

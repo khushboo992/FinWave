@@ -1,0 +1,130 @@
+/* --- Desktop Helpers --- */
+.mobile-menu-btn,
+.mobile-drawer {
+  display: none;
+}
+
+.nav-desktop-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+}
+
+/* --- TABLET BREAKPOINT (1024px) --- */
+@media (max-width: 1024px) {
+  .charts-grid,
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* --- MOBILE BREAKPOINT (768px) --- */
+@media (max-width: 768px) {
+  .nav-desktop-content {
+    display: none; /* Hide Desktop Nav */
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2001;
+  }
+
+  .mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px; /* Sidebar style */
+    height: 100vh;
+    background-color: var(--bg-card);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    padding: 80px 2rem 2rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+
+  .drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .drawer-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .drawer-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+  }
+
+  .drawer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+  }
+
+  .drawer-action-btn {
+    background: var(--bg-app);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+
+  /* Layout Stacks */
+  .summary-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .table-wrapper {
+    margin: 1rem;
+    overflow-x: auto;
+  }
+
+  .quick-add-bar {
+    flex-direction: column;
+  }
+
+  .pie-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pie-chart,
+  .legend {
+    width: 100%;
+  }
+}

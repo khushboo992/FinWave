@@ -10,11 +10,11 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 - **React**  
   Component-based UI for building a scalable and dynamic interface  
 
-- **Chart.js**  
-  Interactive charts for balance trends and spending breakdown  
+- **Recharts**  
+  Composable charting library for interactive balance trends and spending breakdowns. 
 
 - **JavaScript (ES6+)**  
-  Core application logic and data handling  
+  Core application logic, asynchronous data fetching, and state management.
 
 - **CSS3**  
   Custom styling with responsive design and dark mode support  
@@ -26,6 +26,10 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 ## ✨ Key Features
 
 ### 📊 Dashboard Overview
+
+- **Live API Synchronization**
+  Fetches real-time transaction data with built-in loading and error handling.
+  
 - **Real-time Summary**  
   Instantly view Total Balance, Total Income, and Total Expenses  
 

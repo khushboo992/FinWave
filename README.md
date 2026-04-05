@@ -57,7 +57,9 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
 src/
 ├── components/
 │   ├── NavBar/           # Navigation & Role Toggle
+
 │   ├── transactionTable/ # Core logic: validation, RBAC, animations
+
 │   ├── charts/           # Data visualization
 │   ├── insights/         # Spending insights
 │   ├── sumCards/         # Balance, income, expense summary
@@ -79,30 +81,6 @@ src/
 package.json
 package-lock.json
 
-src/
-├── components/
-│   ├── NavBar/           # Navigation & Role Toggle
-│   ├── transactionTable/ # Core logic: validation, RBAC, animations
-│   ├── charts/           # Data visualization
-│   ├── insights/         # Spending insights
-│   ├── sumCards/         # Balance, income, expense summary
-│   └── stickyBar/        # Persistent action bar
-│
-├── context/
-│   └── app.context.js    # Global state management
-│
-├── data/
-│   └── mockData.js       # Mock transaction data
-│
-├── pages/                # Page-level components
-│
-├── App.jsx               # Root component
-├── main.jsx              # Entry point
-├── index.css             # Global styles
-└── queries.css           # Responsive styles
-
-package.json
-package-lock.json
 ### 🛠️ Setup Instructions
 Clone the repository (or download the project files).
 Install dependencies:

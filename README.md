@@ -42,7 +42,7 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 - Filter and search transactions efficiently  
 - Organized by category and type (Income / Expense)  
 
----
+
 
 ### 🎭 Role-Based UI
 - **Viewer Mode** → Read-only access  
@@ -128,7 +128,7 @@ Use the **Shield / Eye toggle** in the NavBar
 
 Check out the live version of FinWave:
 
-🔗 **Live Demo:** https://github.com/khushboo992/FinWave 
+🔗 **Live Demo:** https://khushboo992.github.io/FinWave/
 
 
 
@@ -137,8 +137,6 @@ Check out the live version of FinWave:
 ### 🏠 Dashboard Overview
 ![Dashboard](./f1.png)
 
-### 🌙 Dark Mode
-![Dark Mode](./f3.png)
 
 ### 📊 Charts & Analytics
 ![Charts](./f2.png)

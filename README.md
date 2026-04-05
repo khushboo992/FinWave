@@ -30,7 +30,7 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
   Instantly view Total Balance, Total Income, and Total Expenses  
 
 - **Balance Trend**  
-  30-day interactive line chart showing running net balance  
+  interactive line chart showing running net balance  
 
 - **Spending Breakdown**  
   Donut chart to analyze expenses by category  

@@ -1,8 +1,7 @@
-# 🌊 FinWave | Advanced Finance Dashboard
+# FinWave | Advanced Finance Dashboard
 
-FinWave is a professional-grade financial tracking application designed with a focus on **Fluid UX**, **Data Integrity**, and **Responsive Symmetry**.  
-It features an enterprise-level **Role-Based Access Control (RBAC)** system along with real-time financial guardrails.
-
+FinWave is a high-performance financial dashboard focused on scalable architecture, responsive design, and intuitive user interaction.
+It includes an enterprise-level Role-Based Access Control (RBAC) system along with real-time financial safeguards.
 ---
 
 ## 🛠️ Tech Stack
@@ -36,7 +35,7 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
 - **Spending Breakdown**  
   Donut chart to analyze expenses by category  
 
----
+
 
 ### 💳 Transaction Management
 - Add and manage transactions  

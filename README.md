@@ -3,7 +3,7 @@
 FinWave is a high-performance financial dashboard focused on **scalable architecture, responsive design, and intuitive user interaction**.  
 It includes an enterprise-level **Role-Based Access Control (RBAC)** system along with real-time financial safeguards.
 
----
+
 
 ## 🛠️ Tech Stack
 
@@ -22,7 +22,6 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 - **LocalStorage**  
   Client-side data persistence for transactions and user preferences  
 
----
 
 ## ✨ Key Features
 
@@ -57,7 +56,7 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 - Identifies top expense categories  
 - Provides useful financial observations  
 
----
+
 
 ### 🌗 User Experience & Enhancements
 - Fully responsive across all devices  
@@ -83,7 +82,7 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 
 
 
----
+
 
 ## 🛠️ Setup Instructions
 
@@ -99,7 +98,7 @@ npm run dev
 http://localhost:5173
 
 
----
+
 
 ## 🧠 Role-Based Access (RBAC)
 
@@ -116,7 +115,7 @@ http://localhost:5173
 ### Switching Roles
 Use the **Shield / Eye toggle** in the NavBar  
 
----
+
 
 ## 🎯 Design Principles
 
@@ -125,7 +124,7 @@ Use the **Shield / Eye toggle** in the NavBar
 - Clean and predictable state flow  
 - Fully responsive UI  
 
----
+
 
 ## 👤 Author
 

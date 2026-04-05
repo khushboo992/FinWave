@@ -11,26 +11,24 @@ import {
 import { AppContext } from "../context/AppContext";
 import "../index.css";
 
-const formatCurrency = (val) => `₹${val.toLocaleString()}`;
+const formatCurrency = (val) => `₹${val.toLocaleString("en-IN")}`;
 
 function Insights() {
   const { transactions, theme } = useContext(AppContext);
 
   const data = useMemo(() => {
-    const now = new Date();
-    const currM = now.getMonth();
-    const currY = now.getFullYear();
-
-    const prevDate = new Date(currY, currM - 1, 1);
-    const prevM = prevDate.getMonth();
-    const prevY = prevDate.getFullYear();
+    const currentYear = new Date().getFullYear();
+    // Logic for March (Index 2) vs April (Index 3) 2026
+    const months = [
+      { name: "March", m: 2, y: currentYear },
+      { name: "April", m: 3, y: currentYear },
+    ];
 
     const getStats = (m, y) => {
       const filtered = transactions.filter((t) => {
         const d = new Date(t.date);
         return d.getMonth() === m && d.getFullYear() === y;
       });
-
       const inc = filtered
         .filter((t) => t.type === "income")
         .reduce((s, t) => s + t.amount, 0);
@@ -45,23 +43,24 @@ function Insights() {
           catMap[t.category] = (catMap[t.category] || 0) + t.amount;
         });
 
-      const topCat =
-        Object.keys(catMap).length > 0
-          ? Object.keys(catMap).reduce((a, b) =>
-              catMap[a] > catMap[b] ? a : b,
-            )
-          : "No Expenses";
+      let topCat = "No Expenses",
+        topAmt = 0;
+      Object.entries(catMap).forEach(([cat, amt]) => {
+        if (amt > topAmt) {
+          topCat = cat;
+          topAmt = amt;
+        }
+      });
 
-      return { inc, exp, bal: inc - exp, topCat, topAmt: catMap[topCat] || 0 };
+      return { inc, exp, bal: inc - exp, topCat, topAmt };
     };
 
-    const curr = getStats(currM, currY);
-    const prev = getStats(prevM, prevY);
+    const prev = getStats(months[0].m, months[0].y);
+    const curr = getStats(months[1].m, months[1].y);
 
     const chart = [
       { label: "Income", prev: prev.inc, curr: curr.inc },
       { label: "Expense", prev: prev.exp, curr: curr.exp },
-      /* ✅ Savings clamped to 0 if balance is negative */
       {
         label: "Savings",
         prev: Math.max(0, prev.bal),
@@ -69,87 +68,86 @@ function Insights() {
       },
     ];
 
-    let observation = { text: "Your finances look stable.", type: "neutral" };
-    if (curr.exp > curr.inc && curr.inc > 0) {
-      observation = {
-        text: `Alert: Spending exceeds income by ${formatCurrency(curr.exp - curr.inc)}`,
-        type: "danger",
-      };
-    } else if (curr.bal > prev.bal && prev.bal !== 0) {
-      observation = {
-        text: `Great! Savings increased by ${formatCurrency(curr.bal - prev.bal)}`,
+    // --- CRISPY SMART OBSERVATION LOGIC ---
+    let obs = { text: "No spending data for April yet.", type: "neutral" };
+    const totalExp = curr.exp;
+
+    if (totalExp > 0 && totalExp < 500) {
+      obs = {
+        text: "🌟 Super Saver: Your April spending is under ₹500. You're maintaining incredible control over your budget!",
         type: "success",
+      };
+    } else if (totalExp >= 500 && totalExp <= 10000) {
+      obs = {
+        text: `📊 Balanced: You're in the steady zone. Your biggest expense is ${curr.topCat}. Keep an eye on it to stay on track.`,
+        type: "neutral",
+      };
+    } else if (totalExp > 10000) {
+      obs = {
+        text: `⚠️ High Spending: April expenses crossed ₹10,000! Review your ${curr.topCat} costs to avoid a balance dip.`,
+        type: "danger",
       };
     }
 
     return {
       chart,
       curr,
-      prev,
-      observation,
-      currName: now.toLocaleString("default", { month: "short" }),
-      prevName: prevDate.toLocaleString("default", { month: "short" }),
+      obs,
+      currName: months[1].name,
+      prevName: months[0].name,
     };
   }, [transactions]);
 
   return (
-    <div className="insights-container">
-      {/* ✅ RESTORED HERO GRID (TOP CARDS) */}
+    <div className={`insights-container ${theme}`}>
       <div className="hero-grid">
+        {/* TOP CATEGORY CARD */}
         <div className="insight-card">
           <div className="card-header">
-            <h4>Top Category</h4>
+            <h4>Top Category • {data.currName}</h4>
           </div>
-          <h2>{data.curr.topCat}</h2>
-          <p className="amount" style={{ color: "var(--primary)" }}>
-            {formatCurrency(data.curr.topAmt)}
-          </p>
-          <div className="progress-bar-bg">
-            <div
-              className="progress-bar-fill"
-              style={{
-                width:
-                  data.curr.exp > 0
-                    ? `${Math.min((data.curr.topAmt / data.curr.exp) * 100, 100)}%`
-                    : "0%",
-                backgroundColor: "var(--primary)",
-              }}
-            />
+          <div className="card-content">
+            <p className="top-cat-title">{data.curr.topCat}</p>
+            <span className="amount-display">
+              {formatCurrency(data.curr.topAmt)}
+            </span>
+            <div className="progress-bar-bg">
+              <div
+                className="progress-bar-fill"
+                style={{
+                  width:
+                    data.curr.exp > 0
+                      ? `${Math.min((data.curr.topAmt / data.curr.exp) * 100, 100)}%`
+                      : "0%",
+                }}
+              />
+            </div>
           </div>
         </div>
 
-        <div className={`insight-card observation ${data.observation.type}`}>
+        {/* SMART OBSERVATION CARD */}
+        <div className={`insight-card ${data.obs.type}`}>
           <div className="card-header">
-            <h4>AI Insight</h4>
+            <h4>Smart Observation</h4>
           </div>
-          <p
-            className="observation-text"
-            style={{
-              color: "var(--text-main)",
-              marginTop: "10px",
-              fontSize: "1.1rem",
-              fontWeight: "500",
-            }}
-          >
-            {data.observation.text}
-          </p>
+          <div className="card-content">
+            <p className="observation-text">{data.obs.text}</p>
+          </div>
         </div>
       </div>
 
-      {/* MAIN CHART CARD */}
-      <div className="chart-card">
-        <div className="chart-header">
-          <h3>Performance Comparison</h3>
-          <p>
-            {data.prevName} vs {data.currName}
-          </p>
+      {/* PERFORMANCE CHART */}
+      <div className="chart-card insight-card">
+        <div className="card-header">
+          <h4>
+            Performance: {data.prevName} vs {data.currName}
+          </h4>
         </div>
-
         <div className="chart-wrapper">
           <ResponsiveContainer width="100%" height={300}>
             <BarChart
               data={data.chart}
-              margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
             >
               <CartesianGrid
                 strokeDasharray="3 3"
@@ -160,36 +158,37 @@ function Insights() {
                 dataKey="label"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: theme === "dark" ? "#a1a1aa" : "#64748b" }}
+                tick={{ fill: "var(--text-muted)" }}
               />
               <YAxis
-                tickFormatter={(v) => `₹${v / 1000}k`}
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: theme === "dark" ? "#a1a1aa" : "#64748b" }}
+                tick={{ fill: "var(--text-muted)" }}
+                tickFormatter={(v) => `₹${v / 1000}k`}
               />
               <Tooltip
-                cursor={{
-                  fill: theme === "dark" ? "rgba(255,255,255,0.05)" : "#f8fafc",
-                }}
+                cursor={{ fill: "rgba(0,0,0,0.02)" }}
                 contentStyle={{
                   borderRadius: "12px",
                   border: "none",
-                  background: theme === "dark" ? "#18181b" : "#fff",
-                  color: "var(--text-main)",
+                  boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)",
+                  backgroundColor: theme === "dark" ? "#18181b" : "#fff",
+                  color: theme === "dark" ? "#fff" : "#000",
                 }}
               />
               <Bar
                 dataKey="prev"
-                fill={theme === "dark" ? "#27272a" : "#e2e8f0"}
-                radius={[4, 4, 0, 0]}
-                barSize={32}
+                name={data.prevName}
+                fill="#cbd5e1"
+                radius={[6, 6, 0, 0]}
+                barSize={40}
               />
               <Bar
                 dataKey="curr"
+                name={data.currName}
                 fill="#6366f1"
-                radius={[4, 4, 0, 0]}
-                barSize={32}
+                radius={[6, 6, 0, 0]}
+                barSize={40}
               />
             </BarChart>
           </ResponsiveContainer>

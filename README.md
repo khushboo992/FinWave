@@ -135,3 +135,13 @@ Focused on Motion Design, RBAC Systems, and Financial UX Engineering
 
 
 ## 📂 Project Structure
+src/
+├── components/          # Reusable UI components
+│   ├── dashboard/       # Charts & Summary cards
+│   ├── layout/          # Sidebar, Header, and Shared Layout
+│   ├── insights/        # AI-powered insights section
+│   └── transactions/    # Table, Filters, and Add/Edit Modals
+├── store/               # Zustand central state management
+├── data/                # Mock data generators
+├── App.jsx              # Main router and page logic
+└── index.css            # Global design system & Tailwind v4

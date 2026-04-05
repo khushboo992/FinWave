@@ -122,7 +122,27 @@ Use the **Shield / Eye toggle** in the NavBar
 - Zero layout shift  
 - Smooth performance-first animations  
 - Clean and predictable state flow  
-- Fully responsive UI  
+- Fully responsive UI
+
+ ## 🌐 Live Preview
+
+Check out the live version of FinWave:
+
+🔗 **Live Demo:** https://github.com/khushboo992/FinWave 
+
+
+
+## 📸 Screenshots
+
+### 🏠 Dashboard Overview
+![Dashboard](./f1.png)
+
+### 🌙 Dark Mode
+![Dark Mode](./f3.png)
+
+### 📊 Charts & Analytics
+![Charts](./f2.png)
+
 
 
 

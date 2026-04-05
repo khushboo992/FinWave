@@ -7,29 +7,67 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
 
 ## ⚡ Tech Stack
 
-| Technology | Description |
-|------------|-------------|
-| React 18 | Modern UI framework with concurrent rendering |
-| Framer Motion | GPU-accelerated animations, lazy loading, and transitions |
-| React Context API | Centralized state management |
-| Phosphor Icons | Lightweight and consistent icon system |
-| CSS3 | Scalable design system using index.css & queries.css |
+## 🛠️ Tech Stack
+
+- **React**  
+  Component-based UI for building a scalable and dynamic interface  
+
+- **Chart.js**  
+  Interactive charts for balance trends and spending breakdown  
+
+- **JavaScript (ES6+)**  
+  Core application logic and data handling  
+
+- **CSS3**  
+  Custom styling with responsive design and dark mode support  
+
+- **LocalStorage**  
+  Client-side data persistence for transactions and user preferences  
+
+---
+## ✨ Key Features
+
+### 📊 Dashboard Overview
+- **Real-time Summary**  
+  Instantly view Total Balance, Total Income, and Total Expenses  
+
+- **Balance Trend**  
+  30-day interactive line chart showing running net balance  
+
+- **Spending Breakdown**  
+  Donut chart to analyze expenses by category  
 
 ---
 
-## ✨ Core Features
+### 💳 Transaction Management
+- Add and manage transactions  
+- Filter and search transactions efficiently  
+- Organized by category and type (Income / Expense)  
 
-### 🛡️ Real-Time Financial Guardrails
+---
 
-- **Anti-Negative Balance Guard**  
-  Prevents expenses exceeding available balance *(Income − Expense)*  
+### 🎭 Role-Based UI
+- **Viewer Mode** → Read-only access  
+- **Admin Mode** → Add and manage transactions  
+- Smooth role switching with consistent layout  
 
-- **Safe Search Logic**  
-  Prevents UI flickering during filtering  
+---
 
-- **Data Sanitization**  
-  - `.trim()` applied on inputs  
-  - Positive number enforcement  
+### 🧠 AI-Powered Insights
+- Highlights spending patterns  
+- Identifies top expense categories  
+- Provides useful financial observations  
+
+---
+
+### 🌗 User Experience & Enhancements
+- Fully responsive across all devices  
+- Dark mode support  
+- Local storage persistence (data saved in browser)  
+- Smooth animations and transitions  
+- Handles empty and no-data states gracefully  
+
+---
 
 ---
 
@@ -115,8 +153,6 @@ Use the **Shield / Eye toggle** in the NavBar
 - Smooth performance-first animations  
 - Clean and predictable state flow  
 - Fully responsive UI  
-
----
 
 ---
 

@@ -5,8 +5,6 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
 
 ---
 
-## ⚡ Tech Stack
-
 ## 🛠️ Tech Stack
 
 - **React**  
@@ -25,6 +23,7 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
   Client-side data persistence for transactions and user preferences  
 
 ---
+
 ## ✨ Key Features
 
 ### 📊 Dashboard Overview
@@ -63,69 +62,41 @@ It features an enterprise-level **Role-Based Access Control (RBAC)** system alon
 ### 🌗 User Experience & Enhancements
 - Fully responsive across all devices  
 - Dark mode support  
-- Local storage persistence (data saved in browser)  
+- Local storage persistence  
 - Smooth animations and transitions  
 - Handles empty and no-data states gracefully  
 
 ---
 
----
-
 ### 🎭 Motion & UX Engineering
-
-- **Lazy Loading Rows**  
-  Animations trigger only when visible  
-
-- **RBAC Symmetry (Ghost Column)**  
-  Prevents layout shifts between roles  
-
-- **Smooth Transitions**  
-  Admin bar uses `circOut` easing  
+- **Lazy Loading Rows** → Animations trigger only when visible  
+- **RBAC Symmetry (Ghost Column)** → Prevents layout shifts  
+- **Smooth Transitions** → Uses `circOut` easing for fluid UI  
 
 ---
 
 ### 🔍 Data Handling
+- Smart filtering (Category + Type)  
+- No results state handling  
+- Dynamic pagination with scroll reset  
 
-- **Smart Filtering** (Category + Type)  
-- **No Results State Handling**  
-- **Dynamic Pagination (View All + Scroll Reset)**  
+---
 
-### Project Structure
 
-src/
-├── components/
-│   ├── NavBar/           # Navigation & Role Toggle
+---
 
-│   ├── transactionTable/ # Core logic: validation, RBAC, animations
+## 🛠️ Setup Instructions
 
-│   ├── charts/           # Data visualization
-│   ├── insights/         # Spending insights
-│   ├── sumCards/         # Balance, income, expense summary
-│   └── stickyBar/        # Persistent action bar
-│
-├── context/
-│   └── app.context.js    # Global state management
-│
-├── data/
-│   └── mockData.js       # Mock transaction data
-│
-├── pages/                # Page-level components
-│
-├── App.jsx               # Root component
-├── main.jsx              # Entry point
-├── index.css             # Global styles
-└── queries.css           # Responsive styles
+### 1. Install Dependencies
+npm install
 
-package.json
-package-lock.json
 
-### 🛠️ Setup Instructions
-Clone the repository (or download the project files).
-Install dependencies:
-1.  npm install
-Run in development:
-2. npm run dev
-3. Open locally: Navigate to http://localhost:5173 in your browser.
+### 2. Run Development Server
+npm run dev
+
+
+### 3. Open in Browser
+http://localhost:5173
 
 
 ---
@@ -138,9 +109,9 @@ Run in development:
 - No edit permissions  
 
 ### Admin
-- Add transactions (Quick Add bar)  
+- Add transactions  
 - Delete transactions  
-- Full control  
+- Full control over data  
 
 ### Switching Roles
 Use the **Shield / Eye toggle** in the NavBar  
@@ -160,13 +131,6 @@ Use the **Shield / Eye toggle** in the NavBar
 
 **Khushboo Rawat**  
 Focused on Motion Design, RBAC Systems, and Financial UX Engineering  
-
----
-
-## 📄 License
-
-FinWave © 2026  
-Navigating your financial future 🌊
 
 
 

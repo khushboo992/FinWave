@@ -88,18 +88,6 @@ It includes an enterprise-level **Role-Based Access Control (RBAC)** system alon
 
 
 
-## 🛠️ Setup Instructions
-
-### 1. Install Dependencies
-npm install
-
-
-### 2. Run Development Server
-npm run dev
-
-
-### 3. Open in Browser
-http://localhost:5173
 
 
 
